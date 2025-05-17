@@ -1,0 +1,14 @@
+#game {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: .1rem;;
+    background: black;
+    width: 20rem;
+    height: 20rem;
+}
+
+#game > div {
+    background: white;
+    padding: 1rem;
+}
