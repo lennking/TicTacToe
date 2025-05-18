@@ -6,6 +6,7 @@ html, body{
     height: 100vh;
 }
 body {
+    font-family: roboto, arial;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -23,7 +24,12 @@ h1{
     gap: 4px;
 }
 .cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10rem;
     background-color: white;
-    width: 100px;
-    height: 100px;
+    width: 10rem;
+    height: 10rem;
+    display: flex;
 }
