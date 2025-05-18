@@ -1,14 +1,29 @@
-#game {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: .1rem;;
-    background: black;
-    width: 20rem;
-    height: 20rem;
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    height: 100vh;
+}
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+h1{
+    margin: 3rem 0rem 5rem;
 }
 
-#game > div {
-    background: white;
-    padding: 1rem;
+#gameBoard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: black;
+    gap: 4px;
+}
+.cell {
+    background-color: white;
+    width: 100px;
+    height: 100px;
 }
