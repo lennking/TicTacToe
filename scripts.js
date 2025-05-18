@@ -1,9 +1,12 @@
 const game = (function() {
     const board = ['','','','','','','','',''];
     let letter = true;
-    function createPlayer(number){
-        return { id: number, score: 0 };
+    function createPlayer(id){
+        return { id: id, score: 0 };
     };
+    const player1 = createPlayer(1);
+    const player2 = createPlayer(2);
+
     function renderBoard() {
         const gameBoard = document.getElementById('gameBoard');
         gameBoard.innerHTML= '';
@@ -15,6 +18,7 @@ const game = (function() {
             cell.addEventListener('click', () => handleClick(index));
             gameBoard.appendChild(cell);
         });
+        renderScore();
     };
     function handleClick(index) {
         //on empty cell
@@ -28,7 +32,7 @@ const game = (function() {
             letter = !letter;
         };
         renderBoard();
-        checkWin();
+        setTimeout(checkWin, 50);
     }
     function checkWin() {
         const winCombos = [
@@ -50,10 +54,23 @@ const game = (function() {
                 board[a] === board[b] &&
                 board[b] === board[c]
             ) {
-                alert("you wins");
+                //check who won
+                if (board[a] === 'X') player1.score++;
+                if (board[a] === 'O') player2.score++;
+                renderScore();
+                setTimeout(() => {
+                    alert(`${board[a]} wins!`);
+                }, 50);
+                return;
             }
         };
-    }
+    };
+    function renderScore() {
+        const scoreBoard = document.getElementById('scoreBoard');
+        scoreBoard.innerHTML = `Player ${player1.id}: ${player1.score}<br>
+                                Player ${player2.id}: ${player2.score}
+                                `;
+    };
     return {
         renderBoard,
         createPlayer,
@@ -68,6 +85,5 @@ const game = (function() {
     };
 })();
 
-game.createPlayer(1);
-game.createPlayer(2);
+
 game.renderBoard();
