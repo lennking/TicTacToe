@@ -1,6 +1,5 @@
 const game = (function() {
     const board = ['','','','','','','','',''];
-    const i = 0;
     let letter = true;
     function createPlayer(number){
         return { id: number, score: 0 };
@@ -22,15 +21,38 @@ const game = (function() {
         if (board[index] === '') {
             if (letter == true) {
                 board[index] = 'X';
-                
             }
             else {
                 board[index] = 'O';
-                
             }
             letter = !letter;
         };
         renderBoard();
+        checkWin();
+    }
+    function checkWin() {
+        const winCombos = [
+            //arrays of winning combinations
+            [0,1,2], // top row
+            [3,4,5], // middle row
+            [6,7,8], // bottom row
+            [0,3,6], // left column
+            [1,4,7], // middle column
+            [2,5,8], // right column
+            [0,4,8], // main diagonal
+            [2,4,6]  // anti-diagonal
+        ];
+        for (const combo of winCombos) {
+            //test each combo
+            const [a, b, c] = combo;
+            if (
+                board[a] !== '' &&
+                board[a] === board[b] &&
+                board[b] === board[c]
+            ) {
+                alert("you wins");
+            }
+        };
     }
     return {
         renderBoard,
