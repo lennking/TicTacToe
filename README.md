@@ -1,1 +1,1 @@
-Super basic game of Tic-tac-toe
+A game of Tic-tac-toe but modular
