@@ -1,6 +1,7 @@
 const game = (function() {
     const board = ['','','','','','','','',''];
     const i = 0;
+    let letter = true;
     function createPlayer(number){
         return { id: number, score: 0 };
     };
@@ -19,7 +20,15 @@ const game = (function() {
     function handleClick(index) {
         //on empty cell
         if (board[index] === '') {
-            board[index] = 'X';
+            if (letter == true) {
+                board[index] = 'X';
+                
+            }
+            else {
+                board[index] = 'O';
+                
+            }
+            letter = !letter;
         };
         renderBoard();
     }
